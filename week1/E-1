@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int helper(int n, vector<int> &track){
+        if(n==1){
+            return 1;
+        } else if(n==2){
+            return 2;
+        }
+        if(track[n]!=0){
+            return track[n];
+        } else {
+            track[n] = helper(n-1, track) + helper(n-2, track);
+            return track[n];
+        }
+    }
+    int climbStairs(int n) {
+        vector<int> track(n+1, 0);
+        return helper(n, track);
+    }
+};
